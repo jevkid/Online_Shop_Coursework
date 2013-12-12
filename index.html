@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+		<link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ribeye' rel='stylesheet' type='text/css'>
+		<link type="text/css", rel="stylesheet", href="stylesheet.css"/>
+		
+		<title>Cool Beans</title>
+	</head>
+	<body>
+<?php
+    // CONNECT TO THE DATABASE
+    $mysqli = new mysqli('ephesus.cs.cf.ac.uk', 'c1338318', 'berlin', 'c1338318');
+    if (mysqli_connect_errno()) {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+        }
+        mysqli_close($mysqli);
+?>
+
+
+	<header>
+		<div id="head">
+			<a href="index.html"><h1>Cool Beans<br><img src="black.png"></h1></a>
+		</div>
+	</header>
+		<nav id="mainmenu">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="shop.php">Shop</a></li>
+			<li><a href="about.html">About</a></li>
+			<li><a href="locations.html">Locations</a></li>
+			<li><a id="cart" href="basket.php"><img src="cart.png"></a>
+		</ul>
+		</nav>
+<!--Search Bar-->
+<form class="form-wrapper cf" action="search.php" method="GET">
+	<input type="text" placeholder="Search..." required name="query"/>
+	<button type="submit">Search</button>
+</form>
+
+	<div id="content">
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td id="cup" background="mug3.png" valign="center">
+			<font size="3" color="black">
+			<p id="welcome">
+				<br>
+			<b>Welcome to Cool Beans!</b><br>
+			Your most reliable source for organic coffee, top quality supplies, and fast service. 
+			For a list of our products, simply  click the <a href="shop.php">shop</a> link at the top, or to find locations selling our coffee, check out our <a href="locations.html">locations</a> page!
+			</p></font>
+		</td>
+	</tr>
+</table>
+	</div>
+		
+		<div id="foot">	
+			<p><center>Copyright Cool Beans</center></p>
+		</div>
+	</body>
+</html>
