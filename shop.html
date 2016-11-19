@@ -14,7 +14,6 @@
 		</div>
 	</header>
 	<div id="mainmenu">
-		
 		<ul>
 			<li><a href="index.html">Home</a></li>
 			<li><a href="shop.php">Shop</a></li>
@@ -23,7 +22,6 @@
 					<li><a href="locations">Ground</a></li>
 					<li><a href="shop">Mugs</a></li>
 				</ul>
-			</li>
 			<li><a href="about.html">About</a></li>
 			<li><a href="locations.html">Locations</a></li>
 			<li><a id="cart" href="basket.php"><img src="cart.png"></a>
@@ -53,35 +51,32 @@
  	elseif ($_GET['sort'] == "price") {
 		 $query = "SELECT * FROM store ORDER BY price";
  	}
- $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+<!--  $result = $mysqli->query($query) or die($mysqli->error.__LINE__); -->
  if ($result->num_rows > 0) {
  	while($db = $result->fetch_assoc()) {
-echo '<div class="product">
-<br>
-<p>
-<img src="'.$db['image'].'">
-<br><span>'.$db['name'].'</span>
-<br><span id="info">$'.$db['price'].'
-<br>'.$db['description'].'
-<br><a href="add.php?id='.$db["product_id"].'">Add to cart</a></span>
+		echo '<div class="product">
+		<br>
+		<p>
+		<img src="'.$db['image'].'">
+		<br><span>'.$db['name'].'</span>
+		<br><span id="info">$'.$db['price'].'
+		<br>'.$db['description'].'
+		<br><a href="add.php?id='.$db["product_id"].'">Add to cart</a></span>
 
-</p>
-</div>';
- 	}
+		</p>
+		</div>';
+	}
  }
-		$basket = array();
-            if(isset($_COOKIE["shop_cookie"])){
-                $result = mysqli_query($con, "SELECT * FROM basket WHERE user_id='".$_COOKIE['shop_cookie']."'");
-                while($store = $result->fetch_object()){
-                    $basket[] = $store->product_id;
-                }                
+$basket = array();
+    if(isset($_COOKIE["shop_cookie"])){
+	$result = mysqli_query($con, "SELECT * FROM basket WHERE user_id='".$_COOKIE['shop_cookie']."'");
+	while($store = $result->fetch_object()){
+	    $basket[] = $store->product_id;
+	}                
+	echo '<p><a href="basket.php">Your basket ('.count($basket).')</a></p>';
+    }
 
-                echo '<p><a href="basket.php">Your basket ('.count($basket).')</a></p>';
-            }
-
-mysqli_close($mysqli);
-
-?>
+mysqli_close($mysqli);?>
 
 </body>
 </html>
